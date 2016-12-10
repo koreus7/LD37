@@ -10,7 +10,7 @@ class MainScene extends BaseWorld
 		var x = new BaseWorldEntity(100, 100, image);
 		add(x);
 		
-		var letterBox = new LetterBox();
+		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
 	}
 	

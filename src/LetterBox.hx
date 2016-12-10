@@ -8,12 +8,13 @@ import com.haxepunk.HXP;
 class LetterBox extends BaseWorldEntity
 {
 
-	public function new() 
+	public function new(cutTop: Float, cutBottom: Float ) 
 	{
 		P5.reset();
 		P5.fill(0);
-		this.graphic = P5.rect(0, 0, HXP.width, 100);
-		
+		P5.rectMode("corner");
+		this.addGraphic(P5.rect(0, 0, HXP.width, cutTop));
+		this.addGraphic(P5.rect(0, HXP.height - cutBottom, HXP.width, cutBottom));
 		super();
 	}
 	
