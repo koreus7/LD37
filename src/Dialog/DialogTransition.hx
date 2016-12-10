@@ -1,4 +1,4 @@
-package Dialog;
+package dialog;
 
 /**
  * ...
@@ -8,12 +8,12 @@ class DialogTransition
 {
 	private var _sideEffect: IDialogSideEffect;
 	private var _playerSpeech: String;
-	private var _nextNode: DialogNode;
+	private var _nextNodeIndex: Int;
 
-	public function new(sideEffect: IDialogSideEffect, nextNode: DialogNode, playerSpeach: String) 
+	public function new(sideEffect: IDialogSideEffect, nextNode: Int, playerSpeach: String) 
 	{
 		_sideEffect = sideEffect;
-		_nextNode = nextNode;
+		_nextNodeIndex = nextNode;
 		_playerSpeech = playerSpeach;
 	}
 	
@@ -22,10 +22,10 @@ class DialogTransition
 		return _playerSpeech;
 	}
 	
-	public function DoTransition(): DialogNode
+	public function DoTransition(): Int
 	{
 		_sideEffect.ApplyEffect();
-		return _nextNode;
+		return _nextNodeIndex;
 	}
 	
 }

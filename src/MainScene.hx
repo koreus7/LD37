@@ -29,6 +29,9 @@ class MainScene extends BaseWorld
 		
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
+		
+		var t = new TestEntity();
+		add(t);
 	}
 	
 }

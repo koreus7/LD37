@@ -1,4 +1,4 @@
-package Dialog;
+package dialog;
 
 /**
  * @author Leo

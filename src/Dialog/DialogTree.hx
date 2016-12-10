@@ -1,4 +1,4 @@
-package Dialog;
+package dialog;
 
 /**
  * ...
@@ -6,33 +6,38 @@ package Dialog;
  */
 class DialogTree
 {
-	private var _root: DialogNode;
-	private var _reporter: IErrorReporter;
-
-	public function new(DialogNode root, IErrorReporter errorReporter) 
+	var _nodes: Array<DialogNode>;
+	var _transitions: Array <DialogTransition>;
+	var _currentNodeIndex: Int;
+	
+	public function new(nodes: Array<DialogNode>, transitions: Array<DialogTransition>) 
 	{
-		_root = root;
-		_reporter = errorReporter;
+		_nodes = nodes;
+		_transitions = transitions;
 	}
 	
-	public function GetRoot(): DialogNode
+	public function ChooseOption(transition: DialogTransition)
 	{
-		return _root;
+		var i = _transitions.indexOf(transition);
+		_currentNodeIndex = _transitions[i].DoTransition();
 	}
 	
-	public function ChooseOption (option: DialogTransition): DialogTree
+	public function GetOptions(): Array<DialogTransition>
 	{
-		var index = _root.GetOptions().indexOf(option);
+		var a = new Array<DialogTransition>();
+		var optionsIndicies = _nodes[_currentNodeIndex].GetOptions();
 		
-		if (index == -1)
+		for (i in optionsIndicies)
 		{
-			_reporter.Log("Invalid dialog option");
-			return this;
+			a.push(TransitionMap(i));
 		}
 		
-		DialogNode nextNode = _root.GetOptions()[index].DoTransition();
-		
-		return new DialogTree(nextNode, _reporter);
+		return a;
+	}
+	
+	private function TransitionMap(i: Int): DialogTransition
+	{
+		return _transitions[i];
 	}
 	
 }
