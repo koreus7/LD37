@@ -10,5 +10,6 @@ class MainScene extends BaseWorld
 		image.scale = 0.1;
 		var x = new BaseWorldEntity(100, 100, image);
 		add(x);
+
 	}
 }

@@ -1,0 +1,6 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "haxe.haxelibPath": "/usr/lib/haxelib",
+    "haxe.haxePath": "/usr/bin/haxe",
+    "haxe.haxeDefaultBuildFile": "src/build.hxml"
+}
