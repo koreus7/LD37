@@ -6,10 +6,18 @@ class MainScene extends BaseWorld
 {
 	public override function begin()
 	{
-		var image = new Image("graphics/nati.png");
-		image.scale = 0.1;
+		var image = new Image("graphics/door.png");
 		var x = new BaseWorldEntity(100, 100, image);
 		add(x);
-
+		
+		var letterBox = new LetterBox();
+		add(letterBox);
 	}
+	
+	override public function update() 
+	{
+		
+		super.update();
+	}
+	
 }
