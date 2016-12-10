@@ -7,6 +7,7 @@ import com.haxepunk.HXP;
  */
 class G
 {
-	public static var letterBottom: Float = 150;
-	public static var letterTop:Float = 100;
+	public static inline var letterBottom: Float = 150;
+	public static inline var letterTop:Float = 100;
+	public static inline var floorTop:Float = 318;
 }
