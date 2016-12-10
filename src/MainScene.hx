@@ -19,13 +19,16 @@ class MainScene extends BaseWorld
 		oldMan.y = G.floorTop - oldMan.height  + 20;
 		add(oldMan);
 		
+		var visitor = new Visitor();
+		visitor.x = HXP.width - 100;
+		visitor.y = G.floorTop - visitor.height + 20;
+		add(visitor);
+		
+		var fog = new Fog();
+		add(fog);
+		
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
-	}
-	
-	override public function update() 
-	{	
-		super.update();
 	}
 	
 }
