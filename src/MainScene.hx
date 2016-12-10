@@ -24,8 +24,14 @@ class MainScene extends BaseWorld
 		visitor.y = G.floorTop - visitor.height + 20;
 		add(visitor);
 		
+		var fire = new FirePlace();
+		fire.x = 100;
+		fire.y = G.floorTop - 100;
+		add(fire);
+		
 		var fog = new Fog();
 		add(fog);
+		
 		
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
