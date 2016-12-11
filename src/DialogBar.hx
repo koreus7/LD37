@@ -22,6 +22,7 @@ class DialogBar extends BaseWorldEntity
 	private var _stageContainer: DialogStageContainer;
 	private var _nextButton: Button;
 	private var _prevButton: Button;
+	private var _nameLabel: Label;
 	private var _tree: DialogTree;
 	private static inline var _containerPadding: Int = 10;
 	private var _borderWidth: Int = 512;
@@ -35,7 +36,10 @@ class DialogBar extends BaseWorldEntity
 	
 	public function PlayDialogTree(tree: DialogTree)
 	{
-		
+		_tree = tree;
+		baseWorld.remove(_stageContainer);
+		_stageContainer = newStageContainer();
+		baseWorld.add(_stageContainer);
 	}
 	
 	override public function update():Void 
@@ -48,6 +52,9 @@ class DialogBar extends BaseWorldEntity
 		_prevButton.x = _border.x + _border.halfWidth + _containerPadding/2.0 - (_nextButton.width + _prevButton.width) / 2.0;
 		_nextButton.x = _prevButton.x + _prevButton.width;
 		_nextButton.y = _prevButton.y = _border.y + _borderHeight - _nextButton.height - 10;
+		
+		_nameLabel.x = x + (width - _borderWidth) / 2.0 - _nameLabel.width;
+		_nameLabel.y = y + height / 2.0 - _nameLabel.halfHeight;
 		
 		_stageContainer.x = _border.x + _containerPadding;
 		_stageContainer.y = _border.y + _containerPadding;
@@ -62,15 +69,9 @@ class DialogBar extends BaseWorldEntity
 		
 		
 		var transitions = new Array<DialogTransition>();
-		transitions.push(new DialogTransition(new DummySideEffect(), 3, "Hi Son"));
-	    transitions.push(new DialogTransition(new TestSideEffect(), 1, "Hi J"));
-	    transitions.push(new DialogTransition(new DummySideEffect(), 2, "Hi K"));
 		
 		var nodes = new Array<DialogNode>();
-		nodes.push(new DialogNode("Hi Dad", [0, 1, 2]));
-		nodes.push(new DialogNode("My Name is not J!", []));
-		nodes.push(new DialogNode("I'm glad you recognised me", []));
-		nodes.push(new DialogNode("Sonny day isn't it ;)", []));
+		nodes.push(new DialogNode("...", []));
 		
 		_tree = new DialogTree(nodes, transitions);
 		
@@ -90,6 +91,11 @@ class DialogBar extends BaseWorldEntity
 		
 		_nextButton.color = _prevButton.color = 0xffffff;
 		
+		_nameLabel = new Label("????");
+		_nameLabel.size = 24;
+		_nameLabel.color = 0xffffff;
+		
+		baseWorld.add(_nameLabel);
 		baseWorld.add(_nextButton);
 		baseWorld.add(_prevButton);
 		baseWorld.add(_stageContainer);
