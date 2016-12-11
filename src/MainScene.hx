@@ -11,7 +11,7 @@ class MainScene extends BaseWorld
 		
 		
 		var image = new Image("graphics/door.png");
-		var x = new BaseWorldEntity(HXP.width - 100, G.floorTop - image.height, image);
+		var x = new BaseWorldEntity(HXP.width - 50 - image.width, G.floorTop - image.height, image);
 		add(x);
 		
 		var oldMan = new OldMan();
@@ -25,8 +25,8 @@ class MainScene extends BaseWorld
 		add(visitor);
 		
 		var fire = new FirePlace();
-		fire.x = 100;
-		fire.y = G.floorTop - 100;
+		fire.x = 120;
+		fire.y = G.floorTop - fire.height;
 		add(fire);
 		
 		var fog = new Fog();

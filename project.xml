@@ -14,6 +14,7 @@
 
 	<!-- classpath, haxe libs -->
 	<haxelib name="HaxePunk" />
+	<haxelib name="HaxePunk-gui" />
 
 	<!-- assets -->
 	<assets path="assets/graphics" rename="graphics" include="*.png|*.jpg" />
