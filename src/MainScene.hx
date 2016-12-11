@@ -43,8 +43,8 @@ class MainScene extends BaseWorld
 		var dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom);
 		add(dialogBar);
 		
-		var t = new TestEntity();
-		add(t);
+		//var t = new TestEntity();
+		//add(t);
 	}
 	
 }

@@ -27,8 +27,14 @@ class OptionsPage extends BaseWorldEntity
 	{
 		for (b in _buttons)
 		{
-			b.visible = this.visible;
+			if (this.visible){
+				b.show();
+			} else {
+				b.hide();
+			}
 		}
+		
+		super.update();
 	}
 	
 	override public function firstUpdateCallback():Void 
@@ -58,6 +64,4 @@ class OptionsPage extends BaseWorldEntity
 		}
 		super.removed();
 	}
-	
-	
 }

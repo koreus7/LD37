@@ -87,15 +87,15 @@ class DialogStageContainer extends BaseWorldEntity
 	public function GoToNextPage()
 	{
 		var p = GetPage(_selectedIndex + 1);
-		_prev.hide();
-		p.show();
+		_prev.visible = false;
+		p.visible = true;
 	}
 	
 	public function GoToPreviousPage()
 	{
 		var p = GetPage(_selectedIndex - 1);
-		_prev.hide();
-		p.show();
+		_prev.visible = false;
+		p.visible = true;
 	}
 	
 	override public function removed():Void 
@@ -119,8 +119,8 @@ class DialogStageContainer extends BaseWorldEntity
 		
 		
 		baseWorld.add(_optionsPage);
-		_prev.show();
-		_optionsPage.hide();
+		_prev.visible = true;
+		_optionsPage.visible = false;
 		
 		super.firstUpdateCallback();
 	}
