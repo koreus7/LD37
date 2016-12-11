@@ -26,10 +26,10 @@ class DialogPage extends BaseWorldEntity
 		var h: Float = G.letterBottom * 0.8;
 		
 		_textGraphic = new Text(_text, 0, 0, w, h, options);
-		
-		this.addGraphic(_textGraphic);
-		
+				
 		super(x, y);
+		this.addGraphic(_textGraphic);
+
 		
 		setHitbox(w, h);
 		
