@@ -23,26 +23,10 @@ class DialogStageContainer extends BaseWorldEntity
 	{
 		_dialogPages = new Array<DialogPage>();
 		
-		var trans = new Array<DialogTransition>();
-		trans.push(new DialogTransition(new DummySideEffect(), 0, "jdskjf2"));
-		trans.push(new DialogTransition(new DummySideEffect(), 0, "dfffffffff"));
-		trans.push(new DialogTransition(new DummySideEffect(), 0, "22222222"));
+		_optionsPage = new OptionsPage(width, height, options, optionCallBack);
 		
-		_optionsPage = new OptionsPage(width, height, trans, optionCallBack);
+		_dialogPages.push( new DialogPage(text, width, height) );
 		
-		//var dialogString = dialogTree.GetCurrentText();
-		//var numChunks: Int = Math.floor(dialogString.length / MaxChars);
-		//
-		//for (i in 0...numChunks)
-		//{
-			//var length: Int = i == numChunks? dialogString.length - i * numChunks : numChunks;
-			//_dialogPages.push( new DialogPage(dialogString.substr(i * numChunks, length ), width, height) );
-		//}
-		//
-		
-		_dialogPages.push(new DialogPage("Hello", width, height));
-		_dialogPages.push(new DialogPage("Wold", width, height));
-		_dialogPages.push(new DialogPage("sdfsdfdfdsfsd", width, height));
 		_prev = _dialogPages[0];
 		
 		super();
