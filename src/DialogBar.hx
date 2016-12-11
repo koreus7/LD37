@@ -22,6 +22,7 @@ class DialogBar extends BaseWorldEntity
 	private var _stageContainer: DialogStageContainer;
 	private var _nextButton: Button;
 	private var _prevButton: Button;
+	private var _tree: DialogTree;
 	private static inline var _containerPadding: Int = 10;
 	private var _borderWidth: Int = 512;
 	private var _borderHeight: Int = 112;
@@ -71,13 +72,9 @@ class DialogBar extends BaseWorldEntity
 		nodes.push(new DialogNode("I'm glad you recognised me", []));
 		nodes.push(new DialogNode("Sonny day isn't it ;)", []));
 		
-		var tree = new DialogTree(nodes, transitions);
+		_tree = new DialogTree(nodes, transitions);
 		
-		_stageContainer = new DialogStageContainer(_borderWidth - _containerPadding, _borderHeight - _containerPadding, tree.GetOptions(), tree.GetCurrentText(), function (data: Dynamic)
-		{
-			var op = cast(data, DialogTransition);
-			tree.ChooseOption(op);
-		});
+		_stageContainer = newStageContainer();
 		
 		
 		_nextButton = new Button(">", 0, 0, 20, 20);
@@ -105,4 +102,15 @@ class DialogBar extends BaseWorldEntity
 		super.removed();
 	}
 	
+	private function newStageContainer(): DialogStageContainer
+	{
+		return new DialogStageContainer(_borderWidth - _containerPadding, _borderHeight - _containerPadding, _tree.GetOptions(), _tree.GetCurrentText(), function (data: Dynamic)
+		{
+			var op = cast(data, DialogTransition);
+			_tree.ChooseOption(op);
+			baseWorld.remove(_stageContainer);
+			_stageContainer = newStageContainer();
+			baseWorld.add(_stageContainer);
+		});
+	}
 }
