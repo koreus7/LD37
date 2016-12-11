@@ -35,10 +35,8 @@ class MainScene extends BaseWorld
 		var fog = new Fog();
 		add(fog);
 		
-		
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
-		
 		
 		var dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom);
 		add(dialogBar);

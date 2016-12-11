@@ -45,8 +45,8 @@ class DialogBar extends BaseWorldEntity
 		_border.x = x + width -_border.width - 20;
 		_border.y = y + 20;
 		
-		_nextButton.x = _border.x + _borderWidth -_nextButton.width - 10;
-		_prevButton.x = _border.x + 10;
+		_prevButton.x = _border.x + _border.halfWidth + _containerPadding/2.0 - (_nextButton.width + _prevButton.width) / 2.0;
+		_nextButton.x = _prevButton.x + _prevButton.width;
 		_nextButton.y = _prevButton.y = _border.y + _borderHeight - _nextButton.height - 10;
 		
 		_stageContainer.x = _border.x + _containerPadding;
@@ -77,8 +77,8 @@ class DialogBar extends BaseWorldEntity
 		_stageContainer = newStageContainer();
 		
 		
-		_nextButton = new Button(">", 0, 0, 20, 20);
-		_prevButton = new Button("<", 0, 0, 20, 20);
+		_nextButton = new Button(">", 0, 0, 15, 15);
+		_prevButton = new Button("<", 0, 0, 15, 15);
 		
 		_nextButton.addEventListener(Button.CLICKED, function(data: Dynamic) {
 			_stageContainer.GoToNextPage();

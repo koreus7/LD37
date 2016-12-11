@@ -21,12 +21,14 @@ class OptionsPage extends BaseWorldEntity
 		_buttons = new Array<Button>();
 		_chooseCallback = chooseCallBack;
 		super();
+		setHitbox(width, height);
 	}
 	
 	override public function update():Void 
 	{
 		for (b in _buttons)
 		{
+			b.x = x +  width / 2.0 - b.width/2.0;
 			if (this.visible){
 				b.show();
 			} else {
