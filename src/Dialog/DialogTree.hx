@@ -35,6 +35,11 @@ class DialogTree
 		return a;
 	}
 	
+	public function GetCurrentText() : String
+	{
+		return _nodes[_currentNodeIndex].GetText();
+	}
+	
 	private function TransitionMap(i: Int): DialogTransition
 	{
 		return _transitions[i];
