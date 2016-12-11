@@ -19,10 +19,11 @@ class RepeatingBorder extends BaseWorldEntity
 	{
 		_imageLocation = imageLocation;
 		_cornerCutoff = cornerCutoff;
-		_imgWidth = width;
-		_imgHeight = height;
 		
 		var img = new Image(_imageLocation);
+		
+		_imgWidth = img.width;
+		_imgHeight = img.height;
 		
 		var widthToCover = width - 2 * cornerCutoff;
 		var heightToCover = height - 2 * cornerCutoff;
@@ -30,7 +31,7 @@ class RepeatingBorder extends BaseWorldEntity
 		var sectionSize = img.width / 2.0 - cornerCutoff;
 		
 		var widthRepeats: Int = Math.floor(widthToCover / sectionSize);
-		var heightRepeats: Int = Math.floor(heightToCover / heightSize);
+		var heightRepeats: Int = Math.floor(heightToCover / sectionSize);
 		
 		for (i in 0...widthRepeats)
 		{
@@ -55,7 +56,7 @@ class RepeatingBorder extends BaseWorldEntity
 		}
 		
 		var tl = new Image(_imageLocation, 
-		new Rectangle(0, 0, _cornerCutoff, _cornerCutoff);
+		new Rectangle(0, 0, _cornerCutoff, _cornerCutoff));
 		tl.x = 0;
 		tl.y = 0;
 		
@@ -64,12 +65,12 @@ class RepeatingBorder extends BaseWorldEntity
 		tr.x = width - _cornerCutoff;
 		tr.y = 0;
 		
-		var bl = new Image(_imageLocation,
+		var bl = new Image(_imageLocation, 
 		new Rectangle(0, _imgHeight -  _cornerCutoff, _cornerCutoff, _cornerCutoff));
 		bl.x = 0;
 		bl.y = height - _cornerCutoff;
 		
-		var br = new Image(_imageLocation,
+		var br = new Image(_imageLocation, 
 		new Rectangle(_imgWidth - _cornerCutoff, _imgHeight - _cornerCutoff, _cornerCutoff, _cornerCutoff));
 		br.x = width - _cornerCutoff;
 		br.y = height - _cornerCutoff;
@@ -78,6 +79,8 @@ class RepeatingBorder extends BaseWorldEntity
 		addGraphic(tr);
 		addGraphic(bl);
 		addGraphic(br);
+		
+		super();
 		
 	}
 	
@@ -89,7 +92,11 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgWidth / 2.0 - _cornerCutoff, 
 		_imgHeight / 2.0
 		);
-		return new Image(_imageLocation, rect);
+		var img = new Image(_imageLocation, rect);
+		img.tintMode = Image.TINTING_COLORIZE;
+		img.tinting = 1.0;
+		img.color = 0xff0000;
+		return img;
 	}
 	
 	private function GetWidthBottomSection(): Image
@@ -100,8 +107,11 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgWidth / 2.0 - _cornerCutoff,
 		_imgHeight / 2.0
 		);
-		
-		return new Image(_imageLocation, rect);
+		var img = new Image(_imageLocation, rect);
+		img.tintMode = Image.TINTING_COLORIZE;
+		img.tinting = 1.0;
+		img.color = 0x00ff00;
+		return img;
 	}
 	
 	private function GetHeightSection(): Image
@@ -110,8 +120,12 @@ class RepeatingBorder extends BaseWorldEntity
 		0, 
 		_cornerCutoff,
 		_imgWidth / 2.0,
-		_imgHeight / 2.0 - _cornerCutoff)
-		return new Image(_imageLocation, rect);
+		_imgHeight / 2.0 - _cornerCutoff);
+		var img = new Image(_imageLocation, rect);
+		img.tintMode = Image.TINTING_COLORIZE;
+		img.tinting = 1.0;
+		img.color = 0x0000ff;
+		return img;
 	}
 	
 	private function GetHeightRightSection(): Image
@@ -122,5 +136,11 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgWidth / 2.0,
 		_imgHeight / 2.0 - _cornerCutoff
 		);
+		
+		var img = new Image(_imageLocation, rect);
+		img.tintMode = Image.TINTING_COLORIZE;
+		img.tinting = 1.0;
+		img.color = 0xff00ff;
+		return img;
 	}
 }
