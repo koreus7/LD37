@@ -1,6 +1,9 @@
 import com.haxepunk.Scene;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.gui.Button;
+import com.haxepunk.gui.Label;
+import com.haxepunk.gui.RadioButton;
 
 class MainScene extends BaseWorld
 {

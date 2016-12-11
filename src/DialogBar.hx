@@ -2,7 +2,13 @@ package;
 
 import com.haxepunk.Graphic;
 import com.haxepunk.Mask;
+import com.haxepunk.gui.Button;
+import com.haxepunk.gui.Carousel;
+import com.haxepunk.gui.Label;
 import dialog.DialogTree;
+import dialog.DialogTransition;
+import dialog.DummySideEffect;
+import haxe.ds.Option;
 
 /**
  * ...
@@ -36,6 +42,18 @@ class DialogBar extends BaseWorldEntity
 				
 		_border = new RepeatingBorder("graphics/border.png", 512, 112, 6);
 		baseWorld.add(_border);
+		
+		var trans = new Array<DialogTransition>();
+		trans.push(new DialogTransition(new DummySideEffect(), 0, "AAAAA"));
+		trans.push(new DialogTransition(new DummySideEffect(), 0, "AbBBBBBBB"));
+		trans.push(new DialogTransition(new DummySideEffect(), 0, "CCCCCCCCSCASAC"));
+		
+		var ops = new OptionsPage(width, height, trans);
+		
+		ops.x = x;
+		ops.y = y;
+		
+		baseWorld.add(ops);
 		
 		super.firstUpdateCallback();
 	}
