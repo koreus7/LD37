@@ -47,4 +47,14 @@ class BaseWorldEntity extends Entity
 	{
 		return new Vector2D(this.x, this.y);
 	}
+	
+	public function hide()
+	{
+		this.visible = false;
+	}
+	
+	public function show()
+	{
+		this.visible = true;
+	}
 }

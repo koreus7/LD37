@@ -11,14 +11,24 @@ class OptionsPage extends BaseWorldEntity
 {
 	private var _options: Array <DialogTransition>;
 	private var _buttons: Array<Button>;
+	private var _chooseCallback: Dynamic;
 	
 	private static inline var padding = 2;
 	
-	public function new(width: Int, height: Int, options: Array<DialogTransition>)
+	public function new(width: Int, height: Int, options: Array<DialogTransition>, chooseCallBack: Dynamic)
 	{
 		_options = options;
 		_buttons = new Array<Button>();
+		_chooseCallback = chooseCallBack;
 		super();
+	}
+	
+	override public function update():Void 
+	{
+		for (b in _buttons)
+		{
+			b.visible = this.visible;
+		}
 	}
 	
 	override public function firstUpdateCallback():Void 
@@ -28,8 +38,9 @@ class OptionsPage extends BaseWorldEntity
 		for (op in _options)
 		{
 			var b = new Button(op.GetPlayerSpeech(), x, currY,  0, 20);
+			b.color = 0xffffff;
 			b.addEventListener(Button.CLICKED, function  (data:Dynamic) {
-				HXP.log(op.GetPlayerSpeech());
+				_chooseCallback(op);
 			});
 			_buttons.push(b);
 			baseWorld.add(b);
@@ -47,5 +58,6 @@ class OptionsPage extends BaseWorldEntity
 		}
 		super.removed();
 	}
+	
 	
 }
