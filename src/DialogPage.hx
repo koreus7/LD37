@@ -13,7 +13,7 @@ class DialogPage extends BaseWorldEntity
 	private var _textGraphic: Text;
 	private var _text: String;
 
-	public function new(x:Float=0, y:Float=0, text:String) 
+	public function new(x:Float=0, y:Float=0, width:Float, height:Float, text:String) 
 	{
 		_text = text;
 		
@@ -22,16 +22,13 @@ class DialogPage extends BaseWorldEntity
 		options.font = "font/Zorus_Serif.ttf";
         options.size = 14;
 		
-		var w: Float = HXP.width * 0.7;
-		var h: Float = G.letterBottom * 0.8;
-		
-		_textGraphic = new Text(_text, 0, 0, w, h, options);
+		_textGraphic = new Text(_text, 0, 0, width, height, options);
 				
 		super(x, y);
 		this.addGraphic(_textGraphic);
 
 		
-		setHitbox(w, h);
+		setHitbox(width, height );
 		
 	}
 	

@@ -36,10 +36,9 @@ class MainScene extends BaseWorld
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
 		
-		var border = new RepeatingBorder("graphics/border.png", 512, 132, 6);
-		border.x = 10;
-		border.y = G.letterTop + 10;
-		add(border);
+		
+		var dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom);
+		add(dialogBar);
 		
 		var t = new TestEntity();
 		add(t);

@@ -14,7 +14,7 @@ class RepeatingBorder extends BaseWorldEntity
 	private var _imgWidth: Float;
 	private var _imgHeight: Float;
 
-	public function new(imageLocation: String, width: Float, height: Float, 
+	public function new(imageLocation: String, width: Int, height: Int, 
 	cornerCutoff: Float ) 
 	{
 		_imageLocation = imageLocation;
@@ -82,6 +82,8 @@ class RepeatingBorder extends BaseWorldEntity
 		
 		super();
 		
+		setHitbox(width, height);
+		
 	}
 	
 	private function GetWidthSection(): Image
@@ -93,9 +95,6 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgHeight / 2.0
 		);
 		var img = new Image(_imageLocation, rect);
-		img.tintMode = Image.TINTING_COLORIZE;
-		img.tinting = 1.0;
-		img.color = 0xff0000;
 		return img;
 	}
 	
@@ -108,9 +107,6 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgHeight / 2.0
 		);
 		var img = new Image(_imageLocation, rect);
-		img.tintMode = Image.TINTING_COLORIZE;
-		img.tinting = 1.0;
-		img.color = 0x00ff00;
 		return img;
 	}
 	
@@ -122,9 +118,6 @@ class RepeatingBorder extends BaseWorldEntity
 		_imgWidth / 2.0,
 		_imgHeight / 2.0 - _cornerCutoff);
 		var img = new Image(_imageLocation, rect);
-		img.tintMode = Image.TINTING_COLORIZE;
-		img.tinting = 1.0;
-		img.color = 0x0000ff;
 		return img;
 	}
 	
@@ -138,9 +131,6 @@ class RepeatingBorder extends BaseWorldEntity
 		);
 		
 		var img = new Image(_imageLocation, rect);
-		img.tintMode = Image.TINTING_COLORIZE;
-		img.tinting = 1.0;
-		img.color = 0xff00ff;
 		return img;
 	}
 }
