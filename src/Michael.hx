@@ -24,6 +24,8 @@ class Michael extends BaseWorldEntity
 		
 		_sprite.add("shopStand", [0], 10);
 		_sprite.add("shopWalk", [4, 5, 6, 7], 10);
+		_sprite.add("suitWalk", [8, 9, 10, 11], 10);
+		_sprite.add("fireLight", [2, 3, 3, 12], 0.7, false);
 		_sprite.add("xmasStand", [1], 10);
 		
 		this.addGraphic(_sprite);
@@ -33,12 +35,12 @@ class Michael extends BaseWorldEntity
 		this.setHitbox(64, 64);
 	}
 	
-	public function walkTo(xPos: Float, callBack: Dynamic=null, finishAnimation:String="shopStand")
+	public function walkTo(xPos: Float, callBack: Dynamic=null, walkAnimation:String="shopWalk", finishAnimation:String="shopStand")
 	{
 		_sprite.flipped = xPos < x;
 		
 		var t = new VarTween(function(data: Dynamic) {
-			_sprite.play("shopStand");
+			_sprite.play(finishAnimation);
 			if (callBack != null)
 			{
 				callBack();
@@ -48,7 +50,7 @@ class Michael extends BaseWorldEntity
 		t.tween(this, "x", xPos, Utils.mod(x - xPos)/_speed, Utils.linearEase);
 		addTween(t, true);
 		
-		_sprite.play("shopWalk");
+		_sprite.play(walkAnimation);
 	}
 	
 }

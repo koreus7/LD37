@@ -149,7 +149,7 @@ class MichaelVisits extends BaseWorld
 			mk.walkTo(fire.x + fire.halfWidth -mk.halfWidth, function ()
 			{
 				
-			});
+			}, "suitWalk","fireLight");
 		}), 3, "Mikey crosses to the fire, feeds it some fresh wood"));
 		
 		nodes.push(new DialogNode(["*upset* Your dinner’s served, and there’s a pot of tea brewing so it’ll all cool off nicely for when you go eat in a minute, you see."], [0]));
