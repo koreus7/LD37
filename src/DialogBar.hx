@@ -25,8 +25,8 @@ class DialogBar extends BaseWorldEntity
 	private var _nameLabel: Label;
 	private var _tree: DialogTree;
 	private static inline var _containerPadding: Int = 10;
-	private var _borderWidth: Int = 512;
-	private var _borderHeight: Int = 112;
+	private var _borderWidth: Int = 412;
+	private var _borderHeight: Int = 102;
 	
 	public function new(x:Float=0, y:Float=0, width: Int, height: Int, tree:DialogTree) 
 	{		
