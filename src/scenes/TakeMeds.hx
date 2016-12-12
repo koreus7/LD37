@@ -67,22 +67,22 @@ class TakeMeds extends BaseWorld
 		}), 8,  "Time Passes"));
 		
 		
-		var medsBlurb = "As you put your medicine boxes away, you see your name, Trevor Smythe, printed bellow the name of the drug, \"Memantine\" \n This medicine is for...";
+		var medsBlurb = "(As you put your medicine boxes away, you see your name, Trevor Smythe, printed bellow the name of the drug, \"Memantine\" \n This medicine is for...)";
 		var medsLinks = [2, 3, 4];
 		
-		var photoBlurb = "Returning to your chair, you spot your family photo on the mantelpiece, wreathed in mistletoe. \n That reminds you…";
+		var photoBlurb = "(Returning to your chair, you spot your family photo on the mantelpiece, wreathed in mistletoe. \n That reminds you…)";
 		var photoLinks = [5,6, 7];
 		
 		var time = "Time Passes";
 		
-		nodes.push(new DialogNode(["As you place your tea back on the table, you notice your medicine packets lying open. \n You aren't sure if you've taken your medicine today."], [0, 1]));
-		nodes.push(new DialogNode(["You out your daily pills and take them with a swig of tea.", medsBlurb], medsLinks));
-		nodes.push(new DialogNode(["Deciding not to risk a double dose, you don't take the pills.", medsBlurb], medsLinks));
-		nodes.push(new DialogNode(["You have dementia, a form of alzheimer's, and are prone to delusions, confusion and memory loss.", photoBlurb], photoLinks));
-		nodes.push(new DialogNode(["You weren’t really listening at the time, but you think she said something about memory loss, or confusion, or something.", photoBlurb], photoLinks));
-		nodes.push(new DialogNode(["It’s mid December, and your family are coming to visit this week."], [8]));
-		nodes.push(new DialogNode(["You enjoy your tea in front of the nice, hot fire."], [8]));
-		nodes.push(new DialogNode(["Your eldest son, Michael, is coming over after work today. "], [8]));
+		nodes.push(new DialogNode(["(As you place your tea back on the table, you notice your medicine packets lying open.) \n (You aren't sure if you've taken your medicine today.)"], [0, 1]));
+		nodes.push(new DialogNode(["(You out your daily pills and take them with a swig of tea.)", medsBlurb], medsLinks));
+		nodes.push(new DialogNode(["(Deciding not to risk a double dose, you don't take the pills.)", medsBlurb], medsLinks));
+		nodes.push(new DialogNode(["(You have dementia, a form of alzheimer's, and are prone to delusions, confusion and memory loss.)", photoBlurb], photoLinks));
+		nodes.push(new DialogNode(["(You weren’t really listening at the time, but you think she said something about memory loss, or confusion, or something.)", photoBlurb], photoLinks));
+		nodes.push(new DialogNode(["(It’s mid December, and your family are coming to visit this week.)"], [8]));
+		nodes.push(new DialogNode(["(You enjoy your tea in front of the nice, hot fire.)"], [8]));
+		nodes.push(new DialogNode(["(Your eldest son, Michael, is coming over after work today.)"], [8]));
 		nodes.push(new DialogNode([" "], []));
 		var tree = new DialogTree(nodes, transitions);
 

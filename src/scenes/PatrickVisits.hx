@@ -48,6 +48,8 @@ class PatrickVisits extends BaseWorld
 		fire.y = G.floorTop - fire.height;
 		add(fire);
 		
+		fire.instantLight();
+		
 		var fog = new Fog();
 		add(fog);
 		
@@ -57,6 +59,9 @@ class PatrickVisits extends BaseWorld
 		dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom, null);
 		add(dialogBar);
 		
+		
+		
+		add(new SceneIntro("Thursday."));
 		
 		super.begin();
 		
@@ -76,7 +81,7 @@ class PatrickVisits extends BaseWorld
 		transitions.push(new DialogTransition(new SanitySideEffect( 0, this), 4,  "I’m sorry, Patrick."));
 		
 		transitions.push(new DialogTransition(new DynamicSideEffect(function(){
-			var out = new SceneOutro(new LonleyDay1());
+			var out = new SceneOutro(new LonleyDay2());
 			add(out);
 		}), 4,  "Time Passes"));
 		
@@ -89,16 +94,16 @@ class PatrickVisits extends BaseWorld
 		"Patrick: Hey Dad, it’s me!", 
 		"YOU: Alright there, Spud? ", 
 		"(You greet Patrick, your youngest son, by his high school nickname. He never really grew up, so he never really grew out of it.)",
-		"Patrick leans against the wall by the door, visibly uncomfortable.",
+		"(Patrick leans against the wall by the door, visibly uncomfortable.)",
 		"Patrick: It’s strange being here without Mum around. I miss the smell of her baking."], [0, 1, 2]));
-		nodes.push(Utils.DialogAppend(["Patrick looks at you in disbelief.", "Patrick: Dad, I think you’re confused again. Mum passed last spring.",
+		nodes.push(Utils.DialogAppend(["(Patrick looks at you in disbelief.)", "Patrick: Dad, I think you’re confused again. Mum passed last spring.",
 		"(You’re shaken at the news, and while you know you’ve heard it before, it feels like you’re finding out for the first time all over again.)"], drink));
 		nodes.push(Utils.DialogAppend(["(You sip your tea, looking into the fire.)", "(The silence drags on.)"], drink));
 		nodes.push(Utils.DialogAppend(["YOU: I found her old recipe book, and I’ve put it with your presents.", 
 		"YOU: She always joked you’d become a baked Spud if you spent anymore time near the ovens."], drink));
 		nodes.push(new DialogNode(["YOU: I know it’s hard for you to see me struggling with this, especially since your mother passed, and I really appreciate you coming round to check on your old man.",
-		"Patrick says he loves you, and says that it’s hard to be around you when he doesn’t know if you’re really there. You think he’s afraid that it could be inherited, and that he doesn’t like being reminded he could end up like you.",
-		"You don’t say anything else, and Patrick leaves, slamming the door as he goes."], [5]));
+		"(Patrick says he loves you, and says that it’s hard to be around you when he doesn’t know if you’re really there. You think he’s afraid that it could be inherited, and that he doesn’t like being reminded he could end up like you.)",
+		"(You don’t say anything else, and Patrick leaves, slamming the door as he goes.)"], [5]));
 		
 		var tree = new DialogTree(nodes, transitions);
 		dialogBar.PlayDialogTree(tree);

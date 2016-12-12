@@ -19,7 +19,6 @@ class NurseScene extends BaseWorld
 {
 	private var dialogBar: DialogBar;
 	private var treeImage: Image;
-	private var tAlpha = 0.0;
 	
 	override public function begin() 
 	{
@@ -29,12 +28,6 @@ class NurseScene extends BaseWorld
 		var image = new Image("graphics/door.png");
 		var door = new BaseWorldEntity(HXP.width - 50 - image.width, G.floorTop - image.height, image);
 		add(door);
-		
-		
-		treeImage = new Image("graphics/xmastree.png");
-		treeImage.alpha = 0.0;
-		var tree = new BaseWorldEntity(door.x - 64 - 20, G.floorTop - 128 + 10, treeImage );
-		add(tree);
 		
 		var oldMan = new BaseWorldEntity(0,0,new Image("graphics/bottleArmChair.png"));
 		oldMan.x = 80;
@@ -74,16 +67,8 @@ class NurseScene extends BaseWorld
 	override public function update() 
 	{
 		super.update();
-		
-		treeImage.alpha = tAlpha;
 	}
-	
-	private function fadeInTree()
-	{
-		var t = new VarTween(null , TweenType.OneShot);
-		t.tween(this, "tAlpha", 1.0, 5.0, Ease.cubeInOut);
-		this.addTween(t, true);
-	}
+
 	public function FirstDialog()
 	{
 		var transitions = new Array<DialogTransition>();
@@ -140,14 +125,11 @@ class NurseScene extends BaseWorld
 		}), 1,  "Fiona Leaves."));
 		
 		
-		var changeTopic = new DialogNode(["Fiona doesn’t look convinced, so you decide to change the topic.", 
+		var changeTopic = new DialogNode(["(Fiona doesn’t look convinced, so you decide to change the topic.)", 
 		"YOU: Do you think you could give me a hand setting up the Christmas tree? I promised Mikey I’d let the little ones decorate it on Sunday, but it’s a bit heavy for me to move this year", 
-		"Fiona helps you move the tree, and the conversation turns to lighter topics; Mikey took baby Noah to get Christened, Fiona got engaged to her partner, and general Christmas plans.",
+		"(Fiona helps you move the tree, and the conversation turns to lighter topics; Mikey took baby Noah to get Christened, Fiona got engaged to her partner, and general Christmas plans.",
 		"You open a bottle of port, and while Fiona can’t join you for a drink, you pass the rest of your consultation hour joking and laughing freely.",
-		"Time Passes"], [3], function ()
-		{
-			fadeInTree();
-		});
+		"Time Passes"], [3]);
 		
 		nodes.push(new DialogNode(["Fiona: Are you ready to consider moving towards residential care? I think the regular company could really help you, Trevor.", 
 		"(You can tell that, while she’s pushing you towards a decision you don’t want to make, Fiona is genuinely concerned about you being alone this Christmas.)"], [0, 1, 2]));

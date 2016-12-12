@@ -18,7 +18,7 @@ class MedsTextTreeFactory
 		
 	}
 	
-	public function make(intro: Array<String>, x1: String, y1: String, x2:String, y2: String, outro: Array<String>, currentScene: BaseWorld, nextScene:BaseWorld): DialogTree
+	public function make(intro: Array<String>, x1: String, y1: String, x2:String, y2: String, outro: Array<String>, currentScene: BaseWorld, nextScene:BaseWorld, finalCallBack:Dynamic = null): DialogTree
 	{
 		var nodes = new Array<DialogNode>();
 		var transitions = new Array<DialogTransition>();
@@ -31,7 +31,13 @@ class MedsTextTreeFactory
 			currentScene.add(out);
 		}), 2, "Time Passes"));
 		
-		var final = new DialogNode(outro, [2]);
+		var final = new DialogNode(outro, [2], function ()
+		{
+			if (finalCallBack != null)
+			{
+				finalCallBack();
+			}
+		});
 		
 		nodes.push(new DialogNode(intro, [0, 1]));
 		nodes.push(Utils.DialogAppend([y1], final));

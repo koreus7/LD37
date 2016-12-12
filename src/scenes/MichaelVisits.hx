@@ -85,7 +85,7 @@ class MichaelVisits extends BaseWorld
 		var dinner = new DialogNode(["Anyway, here’s your dinner, I’ll go put it on a plate."], [11]);
 		
 		
-		nodes.push(new DialogNode(["You hear a key turn in the door, before it opens and a short, bald man walks in carrying a shopping bag. You look at him.","Hi Dad!"], [0,1,2]));
+		nodes.push(new DialogNode(["(You hear a key turn in the door, before it opens and a short, bald man walks in carrying a shopping bag. You look at him.)","Hi Dad!"], [0,1,2]));
 		nodes.push(Utils.DialogAppend(["Michael? I know I’m in a suit, but you don’t have to be so formal, you see."], dinner));
 		nodes.push(new DialogNode(["Ehah, Spud, that’s a new one."], [3, 4, 5]));
 		nodes.push(Utils.DialogAppend(["Oh, well... Baldness runs in the family you see."], dinner));
@@ -96,8 +96,8 @@ class MichaelVisits extends BaseWorld
 		nodes.push(new DialogNode(["Anyway, here’s your dinner, I’ll go put it on a plate."], [8,9,10]));
 		//xxx
 		nodes.push(new DialogNode(["No, Dad. She’s… She’s not joining us tonight, you see."], []));
-		nodes.push(new DialogNode(["The chips are dry and the fish is always overdone, but the girl serving it has the loveliest smile. Sweet Irish girl, too, with a gorgeous smile. Reminds me of your mother when she was young..."], []));
-		nodes.push(new DialogNode(["… at a chippy called ‘Seaworthies’. She was working the till, and I remember I went back every day just to talk to her again. Eventually, she told me to stop pretending I liked the dreadful fish and take her on a date!"], []));
+		nodes.push(new DialogNode(["YOU: The chips are dry and the fish is always overdone, but the girl serving it has the loveliest smile. Sweet Irish girl, too, with a gorgeous smile. Reminds me of your mother when she was young..."], []));
+		nodes.push(new DialogNode(["YOU: … at a chippy called ‘Seaworthies’. She was working the till, and I remember I went back every day just to talk to her again. Eventually, she told me to stop pretending I liked the dreadful fish and take her on a date!"], []));
 		nodes.push(new DialogNode(["No, Dad. She’s… She’s not joining us tonight, you see."], []));
 		//xxx
 		nodes.push(new DialogNode([""], []));
@@ -187,7 +187,7 @@ class MichaelVisits extends BaseWorld
 		
 		
 		var final = new DialogNode([
-			"Mike hesitates, before asking another question.",
+			"(Mike hesitates, before asking another question.)",
 			"MIKEY: Would you mind leaving the decorations for the little ones to do next week?",
 			"(You always prefer it when the kids decorate the tree. It adds a sort of rustic charm to the Christmas magic, so you promise to make sure it’s left undecorated for young Niamh and baby Noah.)",
 			"(Mike says he needs to get home for his own dinner, and heads out. You sit and watch the fire for a bit, trying to remember where the Christmas decorations got put last year.)"

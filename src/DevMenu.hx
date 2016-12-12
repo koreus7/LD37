@@ -2,6 +2,7 @@ package;
 import com.haxepunk.gui.Button;
 import com.haxepunk.HXP;
 import scenes.LonleyDay1;
+import scenes.LonleyDay3;
 import scenes.MichaelVisits;
 import scenes.NurseScene;
 import scenes.PatrickVisits;
@@ -24,7 +25,7 @@ class DevMenu extends BaseWorldEntity
 		
 		var b = new Button("skip", 0, 0, 100, 50);
 		b.addEventListener(Button.CLICKED, function(data: Dynamic) {
-			HXP.scene = new PatrickVisits();
+			HXP.scene = new LonleyDay1();
 		});
 		b.layer = L.absoluteFront;
 		
