@@ -16,6 +16,13 @@ class BaseWorld extends Scene
 		super();
 	}
 	
+	override public function begin() 
+	{
+		super.begin();
+		
+		add(new DevMenu());
+	}
+	
 	public function decreaseSanity(amount: Float)
 	{
 		sanity -= amount;

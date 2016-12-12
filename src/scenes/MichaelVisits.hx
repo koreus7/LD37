@@ -54,7 +54,7 @@ class MichaelVisits extends BaseWorld
 		
 		add(mk);
 		
-		add(new SceneIntro("Wednesday"));
+		add(new SceneIntro("Monday."));
 		
 		var transitions = new Array<DialogTransition>();
 		var nodes = new Array<DialogNode>();
@@ -85,7 +85,7 @@ class MichaelVisits extends BaseWorld
 		var dinner = new DialogNode(["Anyway, here’s your dinner, I’ll go put it on a plate."], [11]);
 		
 		
-		nodes.push(new DialogNode(["Hi Dad!"], [0,1,2]));
+		nodes.push(new DialogNode(["You hear a key turn in the door, before it opens and a short, bald man walks in carrying a shopping bag. You look at him.","Hi Dad!"], [0,1,2]));
 		nodes.push(Utils.DialogAppend(["Michael? I know I’m in a suit, but you don’t have to be so formal, you see."], dinner));
 		nodes.push(new DialogNode(["Ehah, Spud, that’s a new one."], [3, 4, 5]));
 		nodes.push(Utils.DialogAppend(["Oh, well... Baldness runs in the family you see."], dinner));
@@ -125,13 +125,13 @@ class MichaelVisits extends BaseWorld
 			mk.walkTo(HXP.width - 100, function ()
 			{
 				StartThirdDialog();
-			});
+			}, "suitWalk", "suitStand");
 		}), 4, "Mikey comes back into the living room"));
 		
-		nodes.push(new DialogNode(["The smell of vinegar and fresh fish wafts into the lounge."], [0, 1, 2]));
-		nodes.push(new DialogNode(["The chips are dry and the fish is always overdone, but the girl serving it has the loveliest smile. Sweet Irish girl, too, with a gorgeous smile. Reminds me of your mother when she was young..."], [3]));
-		nodes.push(new DialogNode(["… at a chippy called ‘Seaworthies’. She was working the till, and I remember I went back every day just to talk to her again. Eventually, she told me to stop pretending I liked the dreadful fish and take her on a date!"], [3]));
-		nodes.push(new DialogNode(["*upset* No, Dad. She’s… She’s not joining us tonight, you see."], [3]));
+		nodes.push(new DialogNode(["(The smell of vinegar and fresh fish wafts into the lounge.)"], [0, 1, 2]));
+		nodes.push(new DialogNode(["YOU: The chips are dry and the fish is always overdone, but the girl serving it has the loveliest smile. Sweet Irish girl, too, with a gorgeous smile. Reminds me of your mother when she was young..."], [3]));
+		nodes.push(new DialogNode(["YOU: … at a chippy called ‘Seaworthies’. She was working the till, and I remember I went back every day just to talk to her again. Eventually, she told me to stop pretending I liked the dreadful fish and take her on a date!"], [3]));
+		nodes.push(new DialogNode(["MIKEY: *upset* No, Dad. She’s… She’s not joining us tonight, you see."], [3]));
 		nodes.push(new DialogNode(["..."], []));
 		
 		var tree = new DialogTree(nodes, transitions);
@@ -145,15 +145,58 @@ class MichaelVisits extends BaseWorld
 		var nodes = new Array<DialogNode>();
 		var transitions = new Array<DialogTransition>();
 		
+		transitions.push(new DialogTransition(new DynamicSideEffect(function() {	
+				mk.walkTo(fire.x + fire.halfWidth -mk.halfWidth, function ()
+				{
+					var t = new TimerEntity(2.0, function ()
+					{
+						if (!G.fireIsLit)
+						{
+							decreaseSanity(0.02);
+						}
+						fire.instantLight();
+						
+						var t2 = new TimerEntity(0.5, function ()
+						{
+							StartFourthDialog();
+						});
+						add(t2);
+					});
+					
+					add(t);
+				}, "suitWalk","fireLight");
+		}), 1, "Mikey crosses to the fire, feeds it some fresh wood"));
+		
+		nodes.push(new DialogNode(["MIKEY: *upset* Your dinner’s served, and there’s a pot of tea brewing so it’ll all cool off nicely for when you go eat in a minute, you see."], [0]));
+		nodes.push(new DialogNode(["..."], []));
+		
+		var tree = new DialogTree(nodes, transitions);
+		dialogBar.PlayDialogTree(tree);
+	}
+	
+	private function StartFourthDialog()
+	{
+		var nodes = new Array<DialogNode>();
+		var transitions = new Array<DialogTransition>();
+		transitions.push(new DialogTransition(new DummySideEffect(), 1, "I think I’m doing it on Wednesday"));
+		transitions.push(new DialogTransition(new DummySideEffect(), 2, "I’ll ask Fiona to help me"));
 		transitions.push(new DialogTransition(new DynamicSideEffect(function() {
-			mk.walkTo(fire.x + fire.halfWidth -mk.halfWidth, function ()
-			{
+			var out = new SceneOutro(new MainScene());
+			add(out);
+		}), 0, "Time Passes"));
+		
+		
+		var final = new DialogNode([
+			"Mike hesitates, before asking another question.",
+			"MIKEY: Would you mind leaving the decorations for the little ones to do next week?",
+			"(You always prefer it when the kids decorate the tree. It adds a sort of rustic charm to the Christmas magic, so you promise to make sure it’s left undecorated for young Niamh and baby Noah.)",
+			"(Mike says he needs to get home for his own dinner, and heads out. You sit and watch the fire for a bit, trying to remember where the Christmas decorations got put last year.)"
+		], [2]);
+		
+		nodes.push(new DialogNode(["MIKEY: When are you putting up your Christmas tree, by the way? I used to love helping Mum decorate it, you see."], [0, 1]));	
+		nodes.push(Utils.DialogAppend(["MIKEY: Oh ok, so you’re asking Fiona to help when she comes for your weekly check up?"], final));
+		nodes.push(Utils.DialogAppend(["MIKEY: Ah of course, she’s coming for your weekly check up on Wednesday, isn’t she?"], final));
 				
-			}, "suitWalk","fireLight");
-		}), 3, "Mikey crosses to the fire, feeds it some fresh wood"));
-		
-		nodes.push(new DialogNode(["*upset* Your dinner’s served, and there’s a pot of tea brewing so it’ll all cool off nicely for when you go eat in a minute, you see."], [0]));
-		
 		var tree = new DialogTree(nodes, transitions);
 		dialogBar.PlayDialogTree(tree);
 	}

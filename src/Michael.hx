@@ -25,6 +25,7 @@ class Michael extends BaseWorldEntity
 		_sprite.add("shopStand", [0], 10);
 		_sprite.add("shopWalk", [4, 5, 6, 7], 10);
 		_sprite.add("suitWalk", [8, 9, 10, 11], 10);
+		_sprite.add("suitStand", [12], 10);
 		_sprite.add("fireLight", [2, 3, 3, 12], 0.7, false);
 		_sprite.add("xmasStand", [1], 10);
 		

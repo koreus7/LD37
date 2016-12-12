@@ -45,7 +45,7 @@ class TakeMeds extends BaseWorld
 		
 		fire.instantPutOut();
 		
-		add(new SceneIntro("Monday"));
+		add(new SceneIntro("Prologue."));
 		var transitions = new Array<DialogTransition>();
 		var nodes = new Array<DialogNode>();
 		
