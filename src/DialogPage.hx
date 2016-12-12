@@ -36,6 +36,7 @@ class DialogPage extends BaseWorldEntity
 	{
 		Label.defaultColor = 0xffffff;
 		_label = new Label(_text, x, y, width, height);
+		_label.multiline = true;
 		baseWorld.add(_label);
 		super.firstUpdateCallback();
 	}

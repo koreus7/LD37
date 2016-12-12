@@ -38,7 +38,7 @@ class DialogBar extends BaseWorldEntity
 		{
 			var transitions = new Array<DialogTransition>();
 			var nodes = new Array<DialogNode>();
-			nodes.push(new DialogNode("...", []));
+			nodes.push(new DialogNode(["..."], []));
 			_tree = new DialogTree(nodes, transitions);
 		}
 		super(x, y);

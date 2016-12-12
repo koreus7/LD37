@@ -19,7 +19,7 @@ class BaseWorld extends Scene
 	public function decreaseSanity(amount: Float)
 	{
 		sanity -= amount;
-		Fog.GetInstance().Flash();
+		//Fog.GetInstance().Flash();
 	}
 	
 	public function increaseSanity(amount: Float)

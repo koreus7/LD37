@@ -7,9 +7,9 @@ package dialog;
 class DialogNode
 {
 	private var _options: Array<Int>;
-	private var _text: String;
+	private var _text: Array<String>;
 
-	public function new(text: String, options: Array<Int>) 
+	public function new(text: Array<String>, options: Array<Int>) 
 	{
 		_options = options;
 		_text = text;
@@ -20,7 +20,7 @@ class DialogNode
 		return _options;
 	}
 	
-	public function GetText(): String
+	public function GetText(): Array<String>
 	{
 		return _text;
 	}

@@ -24,7 +24,7 @@ class SanitySideEffect implements IDialogSideEffect
 	{
 		if (_amount < 0)
 		{
-			_world.decreaseSanity(_amount);
+			_world.decreaseSanity(-_amount);
 		}
 		else if (_amount > 0)
 		{

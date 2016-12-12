@@ -22,24 +22,28 @@ class SceneIntro extends BaseWorldEntity
 	
 	public function new(text: String)
 	{
-		this.layer = L.absoluteFront;
-		P5.fill(0,1); 
+		P5.reset();
+		P5.fill(0);
 		P5.rectMode("corner");
 		_blackness = P5.rect(0, 0, HXP.width, HXP.height);
 		
-		var t = new VarTween(null, TweenType.OneShot);
-		t.tween(this, "bAlpha", 0.0, 10.0, Ease.quadInOut);
-		addTween(t, true);
+		//var t = new VarTween(null, TweenType.OneShot);
+		//t.tween(this, "bAlpha", 0.0, 10.0, Ease.quadInOut);
+		//addTween(t, true);
 		
-		addGraphic(_blackness);
 		_text = text;
 		super();
+		
+		graphic = _blackness;
+		
+		setHitbox(HXP.width, HXP.height);
+		this.layer = L.absoluteFront;
 	}
 	
 	override public function firstUpdateCallback():Void 
 	{
-		_label.layer = L.absoluteFront;
 		_label = new Label(_text);
+		_label.layer = L.absoluteFront;
 		_label.size = 28;
 		super.firstUpdateCallback();
 	}
@@ -50,10 +54,10 @@ class SceneIntro extends BaseWorldEntity
 		{
 			_label.x = width / 2.0 - _label.halfWidth; 
 			_label.y = height / 2.0 - _label.halfHeight;
+			_label.alpha = bAlpha;
 		}
 		
 		_blackness.alpha = bAlpha;
-		_label.alpha = bAlpha;
 		super.update();
 	}
 	

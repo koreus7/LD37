@@ -35,7 +35,7 @@ class DialogTree
 		return a;
 	}
 	
-	public function GetCurrentText() : String
+	public function GetCurrentText() : Array<String>
 	{
 		return _nodes[_currentNodeIndex].GetText();
 	}

@@ -19,6 +19,8 @@ class FirePlace extends BaseWorldEntity
 		_fire.add("burn", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11], 10);
 		_fire.play("burn");
 		
+		_fire.visible = G.fireIsLit;
+		
 		this.addGraphic(back);
 		this.addGraphic(_fire);
 		this.addGraphic(frame);
@@ -31,6 +33,11 @@ class FirePlace extends BaseWorldEntity
 	public function instantPutOut()
 	{
 		_fire.visible = false;
+	}
+	
+	public function instantLight()
+	{
+		_fire.visible = true;
 	}
 	
 }

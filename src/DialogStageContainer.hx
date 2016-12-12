@@ -19,13 +19,17 @@ class DialogStageContainer extends BaseWorldEntity
 	private var _selectedIndex: Int = 0;
 	private static inline var MaxChars = 1024;
 	
-	public function new(width: Int, height: Int, options: Array<DialogTransition>, text: String, optionCallBack: Dynamic) 
+	public function new(width: Int, height: Int, options: Array<DialogTransition>, texts: Array<String>, optionCallBack: Dynamic) 
 	{
 		_dialogPages = new Array<DialogPage>();
 		
 		_optionsPage = new OptionsPage(width, height, options, optionCallBack);
 		
-		_dialogPages.push( new DialogPage(text, width, height) );
+		
+		for (t in texts)
+		{
+			_dialogPages.push( new DialogPage(t, width, height) );
+		}
 		
 		_prev = _dialogPages[0];
 		
