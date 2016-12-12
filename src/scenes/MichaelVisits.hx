@@ -181,7 +181,7 @@ class MichaelVisits extends BaseWorld
 		transitions.push(new DialogTransition(new DummySideEffect(), 1, "I think I’m doing it on Wednesday"));
 		transitions.push(new DialogTransition(new DummySideEffect(), 2, "I’ll ask Fiona to help me"));
 		transitions.push(new DialogTransition(new DynamicSideEffect(function() {
-			var out = new SceneOutro(new MainScene());
+			var out = new SceneOutro(new LonleyDay1());
 			add(out);
 		}), 0, "Time Passes"));
 		
