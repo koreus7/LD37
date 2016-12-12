@@ -20,6 +20,7 @@ class DialogTree
 	{
 		var i = _transitions.indexOf(transition);
 		_currentNodeIndex = _transitions[i].DoTransition();
+		_nodes[_currentNodeIndex].Trigger();
 	}
 	
 	public function GetOptions(): Array<DialogTransition>

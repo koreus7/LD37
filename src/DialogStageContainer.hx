@@ -31,7 +31,14 @@ class DialogStageContainer extends BaseWorldEntity
 			_dialogPages.push( new DialogPage(t, width, height) );
 		}
 		
-		_prev = _dialogPages[0];
+		if (_dialogPages.length == 0)
+		{
+			_prev = _optionsPage;
+		}
+		else
+		{
+			_prev = _dialogPages[0];
+		}
 		
 		super();
 		
@@ -40,6 +47,10 @@ class DialogStageContainer extends BaseWorldEntity
 	
 	public function GetPage(index: Int): BaseWorldEntity 
 	{
+		if (_dialogPages.length == 0)
+		{
+			return _optionsPage;
+		}
 		_prev = _getPage(_selectedIndex);
 		return _getPage(index);
 	}
@@ -74,16 +85,22 @@ class DialogStageContainer extends BaseWorldEntity
 	
 	public function GoToNextPage()
 	{
-		var p = GetPage(_selectedIndex + 1);
-		_prev.visible = false;
-		p.visible = true;
+		if (_dialogPages.length != 0)
+		{		
+			var p = GetPage(_selectedIndex + 1);
+			_prev.visible = false;
+			p.visible = true;
+		}
 	}
 	
 	public function GoToPreviousPage()
 	{
-		var p = GetPage(_selectedIndex - 1);
-		_prev.visible = false;
-		p.visible = true;
+		if (_dialogPages.length != 0)
+		{
+			var p = GetPage(_selectedIndex - 1);
+			_prev.visible = false;
+			p.visible = true;
+		}
 	}
 	
 	override public function removed():Void 
@@ -107,8 +124,9 @@ class DialogStageContainer extends BaseWorldEntity
 		
 		
 		baseWorld.add(_optionsPage);
-		_prev.visible = true;
 		_optionsPage.visible = false;
+		_prev.visible = true;
+
 		
 		super.firstUpdateCallback();
 	}

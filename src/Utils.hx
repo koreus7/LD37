@@ -1,5 +1,6 @@
 package ;
 import com.haxepunk.Sfx;
+import dialog.DialogNode;
 import com.haxepunk.HXP;
 
 class Utils
@@ -106,4 +107,8 @@ class Utils
         return Math.sqrt(a*a + b*b);
     }
 
+	public static function DialogAppend(before: Array<String> , after: DialogNode)
+	{
+		return new DialogNode(before.concat(after.GetText()), after.GetOptions(), after.GetAction());
+	}
 }

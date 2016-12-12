@@ -62,7 +62,7 @@ class TakeMeds extends BaseWorld
 		}), 6,  "You need to light the fire."));
 		transitions.push(new DialogTransition(new SanitySideEffect( -0.05, this), 7,  "Somebody’s meant to visit soon."));
 		transitions.push(new DialogTransition(new DynamicSideEffect(function (){
-			var out = new SceneOutro(new SonVisit());
+			var out = new SceneOutro(new MichaelVisits());
 			add(out);
 		}), 8,  "Time Passes"));
 		
