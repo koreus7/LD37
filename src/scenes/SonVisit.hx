@@ -1,5 +1,6 @@
 package scenes;
-
+import com.haxepunk.graphics.Image;
+import com.haxepunk.HXP;
 /**
  * ...
  * @author Leo
@@ -8,7 +9,7 @@ class SonVisit extends BaseWorld
 {
 	override public function begin() 
 	{
-				
+		add(new BackDrop());
 		var image = new Image("graphics/door.png");
 		var x = new BaseWorldEntity(HXP.width - 50 - image.width, G.floorTop - image.height, image);
 		add(x);
@@ -33,9 +34,12 @@ class SonVisit extends BaseWorld
 		
 		var letterBox = new LetterBox(G.letterTop, G.letterBottom);
 		add(letterBox);
+		//
+		//var dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom);
+		//add(dialogBar);
 		
-		var dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom);
-		add(dialogBar);
+		
+		add(new SceneIntro("Tuesday"));
 		
 		super.begin();
 	}

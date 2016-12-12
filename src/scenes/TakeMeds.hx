@@ -45,8 +45,7 @@ class TakeMeds extends BaseWorld
 		
 		fire.instantPutOut();
 		
-		add(new SceneIntro("Monday."));
-		
+		add(new SceneIntro("Monday"));
 		var transitions = new Array<DialogTransition>();
 		var nodes = new Array<DialogNode>();
 		
@@ -62,6 +61,10 @@ class TakeMeds extends BaseWorld
 			decreaseSanity(0.3);
 		}), 6,  "You need to light the fire."));
 		transitions.push(new DialogTransition(new SanitySideEffect( -0.05, this), 7,  "Somebody’s meant to visit soon."));
+		transitions.push(new DialogTransition(new DynamicSideEffect(function (){
+			var out = new SceneOutro(new SonVisit());
+			add(out);
+		}), 8,  "Time Passes"));
 		
 		
 		var medsBlurb = "As you put your medicine boxes away, you see your name, Trevor Smythe, printed bellow the name of the drug, \"Memantine\" \n This medicine is for...";
@@ -77,10 +80,10 @@ class TakeMeds extends BaseWorld
 		nodes.push(new DialogNode(["Deciding not to risk a double dose, you don't take the pills.", medsBlurb], medsLinks));
 		nodes.push(new DialogNode(["You have dementia, a form of alzheimer's, and are prone to delusions, confusion and memory loss.", photoBlurb], photoLinks));
 		nodes.push(new DialogNode(["You weren’t really listening at the time, but you think she said something about memory loss, or confusion, or something.", photoBlurb], photoLinks));
-		nodes.push(new DialogNode(["It’s mid December, and your family are coming to visit this week.", time], []));
-		nodes.push(new DialogNode(["You enjoy your tea in front of the nice, hot fire.", time], []));
-		nodes.push(new DialogNode(["Your eldest son, Michael, is coming over after work today. ", time], []));
-		 
+		nodes.push(new DialogNode(["It’s mid December, and your family are coming to visit this week."], [8]));
+		nodes.push(new DialogNode(["You enjoy your tea in front of the nice, hot fire."], [8]));
+		nodes.push(new DialogNode(["Your eldest son, Michael, is coming over after work today. "], [8]));
+		nodes.push(new DialogNode([" "], []));
 		var tree = new DialogTree(nodes, transitions);
 
 		
