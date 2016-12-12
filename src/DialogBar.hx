@@ -28,8 +28,19 @@ class DialogBar extends BaseWorldEntity
 	private var _borderWidth: Int = 512;
 	private var _borderHeight: Int = 112;
 	
-	public function new(x:Float=0, y:Float=0, width: Int, height: Int) 
+	public function new(x:Float=0, y:Float=0, width: Int, height: Int, tree:DialogTree) 
 	{		
+		if (tree != null)
+		{
+			_tree = tree;
+		}
+		else
+		{
+			var transitions = new Array<DialogTransition>();
+			var nodes = new Array<DialogNode>();
+			nodes.push(new DialogNode("...", []));
+			_tree = new DialogTree(nodes, transitions);
+		}
 		super(x, y);
 		setHitbox(width, height);
 	}
@@ -68,12 +79,6 @@ class DialogBar extends BaseWorldEntity
 		baseWorld.add(_border);
 		
 		
-		var transitions = new Array<DialogTransition>();
-		
-		var nodes = new Array<DialogNode>();
-		nodes.push(new DialogNode("...", []));
-		
-		_tree = new DialogTree(nodes, transitions);
 		
 		_stageContainer = newStageContainer();
 		
