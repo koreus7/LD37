@@ -62,9 +62,11 @@ class NurseScene extends BaseWorld
 		dialogBar = new DialogBar(0, HXP.height - G.letterBottom, HXP.width, G.letterBottom, null);
 		add(dialogBar);
 		
-		FirstDialog();
 		
 		add(new SceneIntro("Wednesday."));
+		
+		FirstDialog();
+		
 		
 		super.begin();
 	}
