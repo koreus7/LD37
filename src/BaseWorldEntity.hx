@@ -3,6 +3,10 @@ package ;
 import com.haxepunk.Entity;
 import com.haxepunk.Graphic;
 import com.haxepunk.Mask;
+import com.haxepunk.Tween;
+import com.haxepunk.tweens.misc.VarTween;
+import com.haxepunk.utils.Ease;
+import com.haxepunk.Tween.TweenType;
 
 
 /**
@@ -20,7 +24,8 @@ class BaseWorldEntity extends Entity
 	public function new(x:Float=0, y:Float=0, graphic:Graphic=null, mask:Mask=null)
 	{
 		super(x, y, graphic, mask);
-
+		this.layer = L.mid;
+		
 		firstUpdate = true;
 
 		this.layer = Layers.main;

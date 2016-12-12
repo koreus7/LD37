@@ -69,6 +69,8 @@ class TakeMeds extends BaseWorld
 		
 		dialogBar.PlayDialogTree(tree);
 		
+		add(new SceneIntro("Meds"));
+		
 	}
 	
 }
