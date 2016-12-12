@@ -69,7 +69,7 @@ class LonleyDay3 extends BaseWorld
 		"(Your mind is your own today, and you don’t want to limit that. You put the pills away without taking them.)",
 		[
 		"(You flick through the catalogue, double checking your choices, before ringing up and getting everything ordered. It’ll be delivered around the 21st, just in time for Christmas.)"
-		], this, new LonleyDay3());
+		], this, new FinalBuffer());
 		
 		dialogBar.PlayDialogTree(tree);
 		

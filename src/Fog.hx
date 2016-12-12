@@ -33,6 +33,11 @@ class Fog extends BaseWorldEntity
 		return _instance;
 	}
 	
+	public function SetAlpha(val: Float)
+	{
+		_image.alpha = val;
+	}
+	
 	public function Flash()
 	{
 		var t = new VarTween(function(data: Dynamic) {
