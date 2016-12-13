@@ -80,11 +80,11 @@ class NurseScene extends BaseWorld
 		
 		var option = 0;
 		
-		if (sanity < 40)
+		if (G.sanity < 40)
 		{
 			option = 1;
 		}
-		else if (sanity < 60)
+		else if (G.sanity < 60)
 		{
 			option = 2;
 		}

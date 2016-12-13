@@ -2,6 +2,8 @@ package ;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.Entity;
 import com.haxepunk.Scene;
+import com.haxepunk.HXP;
+import scenes.FinalInsanity;
 /**
  * ...
  * @author Leo Mahon
@@ -9,8 +11,6 @@ import com.haxepunk.Scene;
 class BaseWorld extends Scene
 {
 
-	private var sanity: Float = G.sanity;
-	
 	public function new()
 	{
 		super();
@@ -19,19 +19,29 @@ class BaseWorld extends Scene
 	override public function begin() 
 	{
 		super.begin();
-		
 		add(new DevMenu());
 	}
 	
 	public function decreaseSanity(amount: Float)
 	{
-		sanity -= amount;
-		//Fog.GetInstance().Flash();
+		G.sanity -= amount;
+		
+		if (G.sanity <= 0)
+		{
+			var out = new SceneOutro(new FinalInsanity());
+			add(out);
+		}
+		G.sanity = Utils.clamp(G.sanity, 0, 1);
+		HXP.log(Std.string(G.sanity));
+		Fog.GetInstance().updateAlphaSann();
 	}
 	
 	public function increaseSanity(amount: Float)
 	{
-		sanity += amount;
+		G.sanity += amount;
+		G.sanity = Utils.clamp(G.sanity, 0, 1);
+		HXP.log(Std.string(G.sanity));
+		Fog.GetInstance().updateAlphaSann();
 	}
 
 }

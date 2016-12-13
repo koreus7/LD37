@@ -11,7 +11,7 @@ class FinalBuffer extends BaseWorld
 	{
 		super();
 		
-		if (G.sanity > 0.5)
+		if (G.sanity > 0.4)
 		{
 			HXP.scene = new FinalSanity();
 		}

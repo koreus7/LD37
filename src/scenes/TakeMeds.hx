@@ -58,7 +58,7 @@ class TakeMeds extends BaseWorld
 		transitions.push(new DialogTransition(new DynamicSideEffect(function (){
 			G.fireIsLit = true;
 			fire.instantLight();
-			decreaseSanity(0.3);
+			decreaseSanity(0.03);
 		}), 6,  "You need to light the fire."));
 		transitions.push(new DialogTransition(new SanitySideEffect( -0.05, this), 7,  "Somebody’s meant to visit soon."));
 		transitions.push(new DialogTransition(new DynamicSideEffect(function (){

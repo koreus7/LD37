@@ -11,5 +11,5 @@ class G
 	public static inline var letterTop:Float = 75;
 	public static inline var floorTop:Float = 231;
 	public static var fireIsLit: Bool = false;
-	public static var sanity:Float = 1.0;
+	public static var sanity:Float = 0.5;
 }

@@ -70,8 +70,8 @@ class MichaelVisits extends BaseWorld
 		transitions.push(new DialogTransition(new SanitySideEffect( -0.03, this), 7, "Is it? My how you’ve grown!"));
 		//xxx
 		transitions.push(new DialogTransition(new SanitySideEffect( 0, this), 10, "There’s this great chippy down the road, ‘Seaworthies’… "));
-		transitions.push(new DialogTransition(new SanitySideEffect( 0.7, this), 11, "You know, I first met your mother…"));
-		transitions.push(new DialogTransition(new SanitySideEffect( -0.7, this), 9, "Did you get any for Niamh?"));
+		transitions.push(new DialogTransition(new SanitySideEffect( 0.07, this), 11, "You know, I first met your mother…"));
+		transitions.push(new DialogTransition(new SanitySideEffect( -0.07, this), 9, "Did you get any for Niamh?"));
 		//xxx
 		transitions.push(new DialogTransition(new DynamicSideEffect(function ()
 		{
@@ -118,8 +118,8 @@ class MichaelVisits extends BaseWorld
 		var transitions = new Array<DialogTransition>();
 		
 		transitions.push(new DialogTransition(new SanitySideEffect( 0, this), 1, "There’s this great chippy down the road, ‘Seaworthies’… "));
-		transitions.push(new DialogTransition(new SanitySideEffect( 0.7, this), 2, "You know, I first met your mother…"));
-		transitions.push(new DialogTransition(new SanitySideEffect( -0.7, this), 3, "Did you get any for Niamh?"));
+		transitions.push(new DialogTransition(new SanitySideEffect( 0.07, this), 2, "You know, I first met your mother…"));
+		transitions.push(new DialogTransition(new SanitySideEffect( -0.07, this), 3, "Did you get any for Niamh?"));
 		transitions.push(new DialogTransition(new DynamicSideEffect(function ()
 		{
 			mk.walkTo(HXP.width - 100, function ()
